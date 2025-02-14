@@ -1,11 +1,7 @@
-#include <iostream>
-#include <stdio.h>
-#include <string.h>
-
-using namespace std;
-
+#include "Reader.h"
+#include "Book.h"
 // Định nghĩa các hằng số giới hạn số lượng
-#define MAX_READER 100
+
 #define MAX_BOOKS 100
 #define MAX_LOANS 100
 
@@ -17,21 +13,6 @@ void header1(){
 void header2(){
     cout << "=========================================================\n";
 }
-
-
-// 1. Quản lý độc giả
-// a. Xem danh sách độc giả ở trong thư viện
-void viewReader();
-// b. Thêm độc giả
-void addReader();
-// c. Chỉnh sửa thông tin của một độc giả
-void editReader();
-// d. Xóa thông tin của một độc giả
-void removeReader();
-// e. Tìm kiếm độc giả theo CCCD
-void FindReaderBaseOnCCCD();
-// f. Tìm kiếm độc giả theo họ tên
-void FindReaderBaseOnName();
 
 int main()
 {
@@ -102,4 +83,16 @@ int main()
         }
     } while (choice != 0);
     return 0;
+}
+
+void addReader(int *count, char readerName[][100], char readerId[][100], char readerCCCD[][100], char readerMail[][100], char readerAddress[][100], char readerGender[][100], int readerBirthday[][3], int readerCardDates[][2], int readerExpiryDate[][2])
+{
+    if (*count >= MAX_READER)
+    {
+        printf("Khong the them doc gia moi, danh sach da day.\n");
+        return;
+    }
+    printf("Nhap thong tin doc gia moi:\n");
+    printf("Ten: "); scanf("%[^]s", readerName[*count]);
+
 }
