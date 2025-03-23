@@ -59,3 +59,29 @@ void countReaderByGenders(char readerGender[][100], int countReader)
     cout << "Nam: " << male << "\n";
     cout << "Nu: " << female << "\n";
 }
+
+// E. Thong ke so sach dang muon
+int countBorrowedBooks(int countLoan, int LoanBookCount[])
+{
+    int totalBorrowedBooks = 0;
+    for (int i = 0; i < countLoan; i++)
+    {
+        totalBorrowedBooks += LoanBookCount[i];
+    }
+    return totalBorrowedBooks;
+}
+// F. Thong ke danh sach doc gia bi tre hen
+void listOverduedReaders(int countLoan, char loanReaderIDs[][20], int returnDates[][3], int returnDatesActual[][3])
+{
+    cout << "Danh sach doc gia bi tre hen: ";
+    for (int i = 0; i < countLoan; i++)
+    {
+        int overdueDays = (returnDatesActual[i][0] - returnDates[i][0]) +
+        (returnDatesActual[i][1] - returnDates[i][1]) * 30 +
+        (returnDatesActual[i][2] - returnDates[i][2]) * 365;
+        if (overdueDays > 0)
+        {
+            cout << loanReaderIDs[i] << " bi tre hen " << overdueDays << " ngay.\n";
+        }
+    }
+}

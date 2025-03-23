@@ -14,7 +14,7 @@ int countTotalReaders(int countReader);
 // D. Thong ke co bao nhieu doc gia theo gioi tinh
 void countReaderByGenders(char readerGender[][100], int countReader);
 // E. Thong ke so sach dang muon
-
+int countBorrowedBooks(int countLoan, int LoanBookCount[]);
 // F. Thong ke danh sach doc gia bi tre hen
-
+void listOverduedReaders(int countLoan, char loanReaderIDs[][20], int returnDates[][3], int returnDatesActual[][3]);
 #endif

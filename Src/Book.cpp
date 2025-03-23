@@ -13,7 +13,7 @@ void viewBook(int count, char bookISBN[][20], char bookTitles[][100], char bookA
         displayBookInfo(i, bookISBN, bookTitles, bookAuthor, bookPublisher, bookGenres, bookPublishedYear, bookPrices, bookQuatites);
 }
 // b. Them sach
-void addBook(int &count, char bookISBN[][20], char bookTitles[][100], char bookAuthor[][100], char bookPublisher[][100], char bookGenres[][50], int bookPublishedYear[], int bookPrices[], int bookQuatites[])
+void addBook(int &count, char bookISBN[][20], char bookTitles[][100], char bookAuthor[][100], char bookPublisher[][100], char bookGenres[][50], int bookPublishedYear[], int bookPrices[], int bookQuatites[], int &totalBooks, int &remainBooks)
 {
     if (count >= MAX_BOOKS)
     {
@@ -29,11 +29,13 @@ void addBook(int &count, char bookISBN[][20], char bookTitles[][100], char bookA
     cout << "Nam xuat ban: "; cin >> bookPublishedYear[count];
     cout << "Gia sach: "; cin >> bookPrices[count];
     cout << "So luong: "; cin >> bookQuatites[count];
+    totalBooks += bookQuatites[count];
+    remainBooks = totalBooks;
     count++;
     cout << "Sach moi da duoc them vao kho.\n";
 }
 // c. Chinh sua thong tin cua mot quyen sach
-void editBook(int count, char bookISBN[][20], char bookTitles[][100], char bookAuthor[][100], char bookPublisher[][100], char bookGenres[][50], int bookPublishedYear[], int bookPrices[], int bookQuantites[])
+void editBook(int count, char bookISBN[][20], char bookTitles[][100], char bookAuthor[][100], char bookPublisher[][100], char bookGenres[][50], int bookPublishedYear[], int bookPrices[], int bookQuantites[], int &totalBooks, int &remainBooks)
 {
     char isbn[100];
     cout << "\nNhap ISBN cua sach can duoc chinh sua:\n";
@@ -78,16 +80,24 @@ void editBook(int count, char bookISBN[][20], char bookTitles[][100], char bookA
                     cin.getline(bookPublisher[i], 100);
                     break;
                 case 5:
+                    cout << "The loai: ";
+                    cin.getline(bookGenres[i], 100);
+                    break;
+                case 6:
                     cout << "Nam xuat ban: ";
                     cin >> bookPublishedYear[i];
                     break;
-                case 6:
+                case 7:
                     cout << "Gia sach: ";
                     cin >> bookPrices[i];
                     break;
-                case 7:
+                case 8:
+                    totalBooks -= bookQuantites[i];
+                    remainBooks -= bookQuantites[i];
                     cout << "So luong sach: ";
-                    cin >> bookPrices[i];
+                    cin >> bookQuantites[i];
+                    totalBooks += bookQuantites[i];
+                    remainBooks += bookQuantites[i];
                     break;
                 case 0:
                     cout << "Thoat chinh sua.\n";
@@ -108,7 +118,7 @@ void editBook(int count, char bookISBN[][20], char bookTitles[][100], char bookA
     cout << "Khong tim thay sach can tim.\n";
 }
 // d. Xoa thong tin sach
-void removeBook(int &count, char bookISBN[][20], char bookTitles[][100], char bookAuthor[][100], char bookPublisher[][100], char bookGenres[][50], int bookPublishedYear[], int bookPrices[], int bookQuatites[])
+void removeBook(int &count, char bookISBN[][20], char bookTitles[][100], char bookAuthor[][100], char bookPublisher[][100], char bookGenres[][50], int bookPublishedYear[], int bookPrices[], int bookQuatites[], int &totalBooks, int &remainBooks)
 {
     char isbn[100];
     cout << "\nNhap vao ISBN cua sach can duoc xoa: \n";
@@ -139,6 +149,8 @@ void removeBook(int &count, char bookISBN[][20], char bookTitles[][100], char bo
             }
             count--;
             cout << "Sach da duoc xoa thanh cong.\n";
+            totalBooks = countTotalBooks(bookQuatites, count);
+            remainBooks = totalBooks;
             return;
         }
     }
@@ -181,4 +193,31 @@ void FindBookBaseOnName(int count, char bookISBN[][20], char bookTitles[][100], 
         }
     }
     cout << "Khong tim thay ten sach can tim\n";
+}
+int FindBookBasedOnISBN(int count, char bookISBN[][20], char input[])
+{
+    int index = -1;
+    for (int i = 0; i < count; i++)
+    {
+        if (strcmp(bookISBN[i], input))
+        {
+            index = i;
+            break;
+        }
+    }
+    return index;
+}
+
+int FindBookBasesOnName(int count, char bookTitiles[][100], char input[])
+{
+    int index = -1;
+    for (int i = 0; i < count; i++)
+    {
+        if (strcmp(bookTitiles[i], input))
+        {
+            index = i;
+            break;
+        }
+    }
+    return index;
 }

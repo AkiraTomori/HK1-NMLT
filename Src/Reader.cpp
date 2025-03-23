@@ -1,6 +1,6 @@
 #include "Reader.h"
 
-void displayReaderInfo(int index, char readerName[][100], char readerId[][100], char readerCCCD[][100], char readerMail[][100], char readerAddress[][100], char readerGender[][100], int readerBirthday[][3], int readerCardDates[][3], int readerExpiryDate[][3])
+void displayReaderInfo(int index, char readerName[][100], char readerId[][20], char readerCCCD[][100], char readerMail[][100], char readerAddress[][100], char readerGender[][100], int readerBirthday[][3], int readerCardDates[][3], int readerExpiryDate[][3])
 {
     // cout << "Thong tin cua doc gia.\n";
     cout << index + 1 << " - " << readerName[index] << " - " << readerId[index] << " - " << readerCCCD[index] << " - " << readerMail[index] << " - " << readerAddress[index] << " - " << readerGender[index]
@@ -9,14 +9,14 @@ void displayReaderInfo(int index, char readerName[][100], char readerId[][100], 
          << readerExpiryDate[index][0] << "/" << readerExpiryDate[index][1] << "/" << readerExpiryDate[index][2] << "\n"; 
 }
 // Xem danh sach va thong tin cua doc gia
-void viewReader(char readerName[][100], char readerId[][100], char readerCCCD[][100], char readerMail[][100], char readerAddress[][100], char readerGender[][100], int readerBirthday[][3], int readerCardDates[][3], int readerExpiryDate[][3], int count)
+void viewReader(char readerName[][100], char readerId[][20], char readerCCCD[][100], char readerMail[][100], char readerAddress[][100], char readerGender[][100], int readerBirthday[][3], int readerCardDates[][3], int readerExpiryDate[][3], int count)
 {
     cout << "\nDanh sach doc gia:\n";
     for (int i = 0; i < count; i++)
         displayReaderInfo(i, readerName, readerId, readerCCCD, readerMail, readerAddress, readerGender, readerBirthday, readerCardDates, readerExpiryDate);
 }
 // b. Thêm độc giả
-void addReader(int &count, char readerName[][100], char readerId[][100], char readerCCCD[][100], char readerMail[][100], char readerAddress[][100], char readerGender[][100], int readerBirthday[][3], int readerCardDates[][3], int readerExpiryDate[][3])
+void addReader(int &count, char readerName[][100], char readerId[][20], char readerCCCD[][100], char readerMail[][100], char readerAddress[][100], char readerGender[][100], int readerBirthday[][3], int readerCardDates[][3], int readerExpiryDate[][3])
 {
     if (count >= MAX_READER)
     {
@@ -64,7 +64,7 @@ void addReader(int &count, char readerName[][100], char readerId[][100], char re
     cout << "Doc gia moi da duoc them thanh cong.\n";
 }
 // c. Chỉnh sửa thông tin của một độc giả
-void editReader(int count, char readerName[][100], char readerId[][100], char readerCCCD[][100], char readerMail[][100], char readerAddress[][100], char readerGender[][100], int readerBirthday[][3], int readerCardDates[][3], int readerExpiryDate[][3])
+void editReader(int count, char readerName[][100], char readerId[][20], char readerCCCD[][100], char readerMail[][100], char readerAddress[][100], char readerGender[][100], int readerBirthday[][3], int readerCardDates[][3], int readerExpiryDate[][3])
 {
     char id[100];
     cout << "\nNhap id cua doc gia can chinh sua: ";
@@ -143,7 +143,7 @@ void editReader(int count, char readerName[][100], char readerId[][100], char re
     cout << "Khong tim thay doc gia can tim de thay doi.\n";
 }
 // d. Xóa thông tin của một độc giả
-void removeReader(int &count, char readerName[][100], char readerId[][100], char readerCCCD[][100], char readerMail[][100], char readerAddress[][100], char readerGender[][100], int readerBirthday[][3], int readerCardDates[][3], int readerExpiryDate[][3])
+void removeReader(int &count, char readerName[][100], char readerId[][20], char readerCCCD[][100], char readerMail[][100], char readerAddress[][100], char readerGender[][100], int readerBirthday[][3], int readerCardDates[][3], int readerExpiryDate[][3])
 {
     char id[100];
     cout << "\nNhap id cua doc gia can xoa: ";
@@ -186,7 +186,7 @@ void removeReader(int &count, char readerName[][100], char readerId[][100], char
     cout << "Khong tim thay ten doc gia.\n";
 }
 // e. Tìm kiếm độc giả theo CCCD
-void FindReaderBaseOnCCCD(int count, char readerName[][100], char readerId[][100], char readerCCCD[][100], char readerMail[][100], char readerAddress[][100], char readerGender[][100], int readerBirthday[][3], int readerCardDates[][3], int readerExpiryDate[][3])
+void FindReaderBaseOnCCCD(int count, char readerName[][100], char readerId[][20], char readerCCCD[][100], char readerMail[][100], char readerAddress[][100], char readerGender[][100], int readerBirthday[][3], int readerCardDates[][3], int readerExpiryDate[][3])
 {
     char cccd[100];
     cout << "\nNhap CCCD cua doc gia can tim: ";
@@ -203,7 +203,7 @@ void FindReaderBaseOnCCCD(int count, char readerName[][100], char readerId[][100
     cout << "Khong tim thay doc gia.\n";
 }
 // f. Tìm kiếm độc giả theo họ tên
-void FindReaderBaseOnName(int count, char readerName[][100], char readerId[][100], char readerCCCD[][100], char readerMail[][100], char readerAddress[][100], char readerGender[][100], int readerBirthday[][3], int readerCardDates[][3], int readerExpiryDate[][3])
+void FindReaderBaseOnName(int count, char readerName[][100], char readerId[][20], char readerCCCD[][100], char readerMail[][100], char readerAddress[][100], char readerGender[][100], int readerBirthday[][3], int readerCardDates[][3], int readerExpiryDate[][3])
 {
     char name[100];
     cout << "\nNhap ten doc gia can tim kiem: ";
@@ -218,4 +218,18 @@ void FindReaderBaseOnName(int count, char readerName[][100], char readerId[][100
         }
     }
     cout << "Khong tim thay doc gia.\n";
+}
+
+int FindReaderBaseOnId(int count, char readerId[][20], char input[])
+{
+    int indexId = -1;
+    for (int i = 0; i < count; i++)
+    {
+        if (strcmp(readerId[count], input) == 0)
+        {
+            indexId = i;
+            break;
+        }
+    }
+    return indexId;
 }

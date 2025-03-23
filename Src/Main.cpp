@@ -8,14 +8,14 @@ int main()
     // Khai báo các kiểu dữ liệu cần thiết để có thể thực hiện chương trình
     // Các kiểu dữ liệu cho việc quản lý độc giả
     char readerName[MAX_READER][100]; // Tên độc giả
-    char readerId[MAX_READER][100]; // Mã độc giả
+    char readerId[MAX_READER][20]; // Mã độc giả
     char readerCCCD[MAX_READER][100]; // CCCD
     char readerMail[MAX_READER][100]; // Email độc giả
     char readerAddress[MAX_READER][100]; // Địa chỉ độc giả
     char readerGender[MAX_READER][100]; // Giới tính độc giả (Nam, nữ, Khác)
-    int readerBirthday[MAX_READER][3]; // Ngày sinh của độc giả
-    int readerCardDates[MAX_READER][3]; // Ngày lập thẻ (ngày, tháng, nam)
-    int readerExpiryDate[MAX_READER][3]; // Ngày hết hạn (ngày, tháng, nam)
+    int readerBirthday[MAX_READER][3] = {0}; // Ngày sinh của độc giả
+    int readerCardDates[MAX_READER][3] = {0}; // Ngày lập thẻ (ngày, tháng, nam)
+    int readerExpiryDate[MAX_READER][3] = {0}; // Ngày hết hạn (ngày, tháng, nam)
     int countReader = 0;
 
     // Các kiểu dữ liệu cho việc quản lý sách
@@ -24,17 +24,20 @@ int main()
     char bookAuthor[MAX_BOOKS][100]; // Tác giả của sách
     char bookPublisher[MAX_BOOKS][100]; // Nhà xuất bản của sách
     char bookGenres[MAX_BOOKS][50]; // Thể loại của sách
-    int bookPublishedYear[MAX_BOOKS]; // Năm Xuất bản
-    int bookPrices[MAX_BOOKS]; // Giá của sách
-    int bookQuantities[MAX_BOOKS]; // Số lượng của sách
+    int bookPublishedYear[MAX_BOOKS] = {0}; // Năm Xuất bản
+    int bookPrices[MAX_BOOKS] = {0}; // Giá của sách
+    int bookQuantities[MAX_BOOKS] = {0}; // Số lượng của sách
     int countBook = 0;
+    int totalBooks = 0;
+    int remainBooks = 0;
 
     // Khái báo dữ liệu về phiếu mượn sách
     char loanReaderIDs[MAX_LOANS][20];   // Mã độc giả
     char loanBooks[MAX_LOANS][MAX_BORROWED_BOOKS][20];   // ISBN các sách được mượn
-    int loanDates[MAX_LOANS][3];         // Ngày mượn (ngày, tháng, năm)
-    int returnDates[MAX_LOANS][3];       // Ngày trả dự kiến (ngày, tháng, năm)
-    int returnDatesActual[MAX_LOANS][3]; // Ngày trả thực tế (ngày, tháng, năm)
+    int loanBookQuantites[MAX_LOANS][MAX_BORROWED_BOOKS] = {0}; // Số lượng sách mà độc giả mượn trong 1 cuốn sách
+    int loanDates[MAX_LOANS][3] = {0};         // Ngày mượn (ngày, tháng, năm)
+    int returnDates[MAX_LOANS][3] = {0};       // Ngày trả dự kiến (ngày, tháng, năm)
+    int returnDatesActual[MAX_LOANS][3] = {0}; // Ngày trả thực tế (ngày, tháng, năm)
     int loanBookCount[MAX_LOANS];    // Số lượng sách mượn trong mỗi phiếu
     int countLoan = 0;
     
@@ -124,13 +127,13 @@ int main()
                             viewBook(countBook, bookISBN, bookTitles, bookAuthor, bookPublisher, bookGenres, bookPublishedYear, bookPrices, bookQuantities);
                             break;
                         case 2:
-                            addBook(countBook, bookISBN, bookTitles, bookAuthor, bookPublisher, bookGenres, bookPublishedYear, bookPrices, bookQuantities);
+                            addBook(countBook, bookISBN, bookTitles, bookAuthor, bookPublisher, bookGenres, bookPublishedYear, bookPrices, bookQuantities, totalBooks, remainBooks);
                             break;
                         case 3:
-                            editBook(countBook, bookISBN, bookTitles, bookAuthor, bookPublisher, bookGenres, bookPublishedYear, bookPrices, bookQuantities);
+                            editBook(countBook, bookISBN, bookTitles, bookAuthor, bookPublisher, bookGenres, bookPublishedYear, bookPrices, bookQuantities, totalBooks, remainBooks);
                             break;
                         case 4:
-                            removeBook(countBook, bookISBN, bookTitles, bookAuthor, bookPublisher, bookGenres, bookPublishedYear, bookPrices, bookQuantities);
+                            removeBook(countBook, bookISBN, bookTitles, bookAuthor, bookPublisher, bookGenres, bookPublishedYear, bookPrices, bookQuantities, totalBooks, remainBooks);
                             break;
                         case 5:
                             FindBookBaseOnISBN(countBook, bookISBN, bookTitles, bookAuthor, bookPublisher, bookGenres, bookPublishedYear, bookPrices, bookQuantities);
@@ -152,10 +155,12 @@ int main()
             }
             case 3:
             {
+                borrowBooks(countReader, readerId, readerName, countLoan, loanReaderIDs, loanBooks, loanBookQuantites, loanDates, returnDates, loanBookCount, countBook, bookISBN, bookTitles, bookQuantities, remainBooks);
                 break;
             }
             case 4:
             {
+                returnBooks(countLoan, loanReaderIDs, loanBooks, loanBookQuantites, loanDates, returnDates, returnDatesActual, loanBookCount, countBook, bookISBN, bookQuantities, bookPrices, remainBooks);
                 break;
             }
             case 5:
@@ -192,8 +197,10 @@ int main()
                             countReaderByGenders(readerGender, countReader);
                             break;
                         case 5:
+                            cout << "So luong sach dang duoc muon: " << countBorrowedBooks(countLoan, loanBookCount) << "\n";
                             break;
                         case 6:
+                            listOverduedReaders(countLoan, loanReaderIDs, returnDates, returnDatesActual);
                             break;
                         case 0:
                             cout << "Quay lai menu chinh.\n";
