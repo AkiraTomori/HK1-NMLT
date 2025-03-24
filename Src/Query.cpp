@@ -38,7 +38,7 @@ void countBookByGenres(char bookGenres[][50], int BookQuantites[], int countBook
     cout << "Thong ke so luong sach the loai.\n";
     for (int i = 0; i < uniqueGenres; i++)
     {
-        cout << "The loai " << checkedGenres[i] << ": " << genreCount[i] << "\n"; 
+        cout << "The loai " << checkedGenres[i] << ": " << genreCount[i] << "\n";
     }
 }
 // C. Thong ke co bao nhieu doc gia
@@ -52,8 +52,10 @@ void countReaderByGenders(char readerGender[][100], int countReader)
     int male = 0, female = 0;
     for (int i = 0; i < countReader; i++)
     {
-        if (strcmp(readerGender[i], "Nam") == 0) male++;
-        if (strcmp(readerGender[i], "Nu") == 0) female++;
+        if (strcmp(readerGender[i], "Nam") == 0)
+            male++;
+        if (strcmp(readerGender[i], "Nu") == 0)
+            female++;
     }
     cout << "So luong doc gia theo gioi tinh.\n";
     cout << "Nam: " << male << "\n";
@@ -77,8 +79,8 @@ void listOverduedReaders(int countLoan, char loanReaderIDs[][20], int returnDate
     for (int i = 0; i < countLoan; i++)
     {
         int overdueDays = (returnDatesActual[i][0] - returnDates[i][0]) +
-        (returnDatesActual[i][1] - returnDates[i][1]) * 30 +
-        (returnDatesActual[i][2] - returnDates[i][2]) * 365;
+                          (returnDatesActual[i][1] - returnDates[i][1]) * 30 +
+                          (returnDatesActual[i][2] - returnDates[i][2]) * 365;
         if (overdueDays > 0)
         {
             cout << loanReaderIDs[i] << " bi tre hen " << overdueDays << " ngay.\n";

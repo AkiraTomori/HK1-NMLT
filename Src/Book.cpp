@@ -2,7 +2,7 @@
 
 void displayBookInfo(int index, char bookISBN[][20], char bookTitles[][100], char bookAuthor[][100], char bookPublisher[][100], char bookGenres[][50], int bookPublishedYear[], int bookPrices[], int bookQuantites[])
 {
-    cout << index + 1 << ". " << bookISBN[index] << " - " << bookTitles[index] << " - " << bookAuthor[index] << " - " << bookPublisher[index] << " - " << bookGenres[index] 
+    cout << index + 1 << ". " << bookISBN[index] << " - " << bookTitles[index] << " - " << bookAuthor[index] << " - " << bookPublisher[index] << " - " << bookGenres[index]
          << " - " << bookPublishedYear[index] << " - " << bookPrices[index] << " - " << bookQuantites[index] << "\n";
 }
 // a. Xem danh sach cac sach trong thu vien
@@ -21,14 +21,23 @@ void addBook(int &count, char bookISBN[][20], char bookTitles[][100], char bookA
         return;
     }
     cout << "\nNhap thong tin cua sach moi:\n";
-    cout << "ISBN: "; cin.ignore(); cin.getline(bookISBN[count], 20);
-    cout << "Tua de: "; cin.getline(bookTitles[count], 100);
-    cout << "Tac gia: "; cin.getline(bookAuthor[count], 100);
-    cout << "Nha xuat ban: "; cin.getline(bookPublisher[count], 100);
-    cout << "The loai: "; cin.getline(bookGenres[count], 50);
-    cout << "Nam xuat ban: "; cin >> bookPublishedYear[count];
-    cout << "Gia sach: "; cin >> bookPrices[count];
-    cout << "So luong: "; cin >> bookQuatites[count];
+    cout << "ISBN: ";
+    cin.ignore();
+    cin.getline(bookISBN[count], 20);
+    cout << "Tua de: ";
+    cin.getline(bookTitles[count], 100);
+    cout << "Tac gia: ";
+    cin.getline(bookAuthor[count], 100);
+    cout << "Nha xuat ban: ";
+    cin.getline(bookPublisher[count], 100);
+    cout << "The loai: ";
+    cin.getline(bookGenres[count], 50);
+    cout << "Nam xuat ban: ";
+    cin >> bookPublishedYear[count];
+    cout << "Gia sach: ";
+    cin >> bookPrices[count];
+    cout << "So luong: ";
+    cin >> bookQuatites[count];
     totalBooks += bookQuatites[count];
     remainBooks = totalBooks;
     count++;
@@ -44,10 +53,10 @@ void editBook(int count, char bookISBN[][20], char bookTitles[][100], char bookA
     for (int i = 0; i < count; i++)
     {
         if (strcmp(bookISBN[i], isbn) == 0)
-        cout << "Da tim thay sach.\n";
+            cout << "Da tim thay sach.\n";
         displayBookInfo(i, bookISBN, bookTitles, bookAuthor, bookPublisher, bookGenres, bookPublishedYear, bookPrices, bookQuantites);
         int choice;
-        do 
+        do
         {
             cout << "Chon thong tin can thay doi:\n";
             cout << "1. ISBN.\n";
@@ -63,48 +72,48 @@ void editBook(int count, char bookISBN[][20], char bookTitles[][100], char bookA
             cin.ignore();
             switch (choice)
             {
-                case 1:
-                    cout << "ISBN moi: ";
-                    cin.getline(bookISBN[i], 20);
-                    break;
-                case 2:
-                    cout << "Tua de sach moi: ";
-                    cin.getline(bookTitles[i], 100);
-                    break;
-                case 3:
-                    cout << "Ten tac gia: ";
-                    cin.getline(bookAuthor[i], 100);
-                    break;
-                case 4:
-                    cout << "Nha xuat ban: ";
-                    cin.getline(bookPublisher[i], 100);
-                    break;
-                case 5:
-                    cout << "The loai: ";
-                    cin.getline(bookGenres[i], 100);
-                    break;
-                case 6:
-                    cout << "Nam xuat ban: ";
-                    cin >> bookPublishedYear[i];
-                    break;
-                case 7:
-                    cout << "Gia sach: ";
-                    cin >> bookPrices[i];
-                    break;
-                case 8:
-                    totalBooks -= bookQuantites[i];
-                    remainBooks -= bookQuantites[i];
-                    cout << "So luong sach: ";
-                    cin >> bookQuantites[i];
-                    totalBooks += bookQuantites[i];
-                    remainBooks += bookQuantites[i];
-                    break;
-                case 0:
-                    cout << "Thoat chinh sua.\n";
-                    break;
-                default:
-                    cout << "Lua chon nhap vao khong hop le.\n";
-                    break;
+            case 1:
+                cout << "ISBN moi: ";
+                cin.getline(bookISBN[i], 20);
+                break;
+            case 2:
+                cout << "Tua de sach moi: ";
+                cin.getline(bookTitles[i], 100);
+                break;
+            case 3:
+                cout << "Ten tac gia: ";
+                cin.getline(bookAuthor[i], 100);
+                break;
+            case 4:
+                cout << "Nha xuat ban: ";
+                cin.getline(bookPublisher[i], 100);
+                break;
+            case 5:
+                cout << "The loai: ";
+                cin.getline(bookGenres[i], 100);
+                break;
+            case 6:
+                cout << "Nam xuat ban: ";
+                cin >> bookPublishedYear[i];
+                break;
+            case 7:
+                cout << "Gia sach: ";
+                cin >> bookPrices[i];
+                break;
+            case 8:
+                totalBooks -= bookQuantites[i];
+                remainBooks -= bookQuantites[i];
+                cout << "So luong sach: ";
+                cin >> bookQuantites[i];
+                totalBooks += bookQuantites[i];
+                remainBooks += bookQuantites[i];
+                break;
+            case 0:
+                cout << "Thoat chinh sua.\n";
+                break;
+            default:
+                cout << "Lua chon nhap vao khong hop le.\n";
+                break;
             }
             if (choice != 0)
             {
@@ -127,7 +136,7 @@ void removeBook(int &count, char bookISBN[][20], char bookTitles[][100], char bo
     for (int i = 0; i < count; i++)
     {
         if (strcmp(bookISBN[i], isbn) == 0)
-        cout << "Da tim thay sach.\n";
+            cout << "Da tim thay sach.\n";
         displayBookInfo(i, bookISBN, bookTitles, bookAuthor, bookPublisher, bookGenres, bookPublishedYear, bookPrices, bookQuatites);
         cout << "Ban co muon xoa sach nay khong ? (y/n)";
         char c;

@@ -1,6 +1,6 @@
 #include "BookLoan.h"
 
-void borrowBooks(int countReader, char readerId[][20], char readerName[][100], int countLoan, char loanReaderID[][20], char loanBooks[MAX_LOANS][MAX_BORROWED_BOOKS][20], int loanBookQuantites[][MAX_BORROWED_BOOKS], int loanDates[][3], int returnDates[][3],
+void borrowBooks(int countReader, char readerId[][20], char readerName[][100], int countLoan, char loanReaderIDs[][20], char loanBooks[MAX_LOANS][MAX_BORROWED_BOOKS][20], int loanBookQuantites[][MAX_BORROWED_BOOKS], int loanDates[][3], int returnDates[][3],
                  int loanBookCount[], int countBook, char bookISBN[][20], char bookTitles[][100], int bookQuantities[], int &remainBooks)
 {
     cout << "Nhap vao ma doc gia: ";
@@ -30,7 +30,7 @@ void borrowBooks(int countReader, char readerId[][20], char readerName[][100], i
     if (idIndex != -1)
     {
         cout << "Da tim thay ten doc gia: " << readerId[idIndex] << "\n";
-        strcpy(loanReaderID[countLoan], readerId[idIndex]);
+        strcpy(loanReaderIDs[countLoan], readerId[idIndex]);
     }
     if (loanDates[idIndex][0] != 0 && loanDates[idIndex][1] != 0 && loanDates[idIndex][2] != 0)
     {
