@@ -75,7 +75,7 @@ int countBorrowedBooks(int countLoan, int LoanBookCount[])
 // F. Thong ke danh sach doc gia bi tre hen
 void listOverduedReaders(int countLoan, char loanReaderIDs[][20], int returnDates[][3], int returnDatesActual[][3])
 {
-    cout << "Danh sach doc gia bi tre hen: ";
+    cout << "Danh sach doc gia bi tre hen: \n";
     for (int i = 0; i < countLoan; i++)
     {
         int overdueDays = (returnDatesActual[i][0] - returnDates[i][0]) +

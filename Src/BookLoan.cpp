@@ -64,6 +64,7 @@ void borrowBooks(int countReader, char readerId[][20], char readerName[][100], i
                 return;
             }
         }
+        cout << "Da tim thay sach: " << bookTitles[i] << "\n";
         cout << "So luong sach muon muon: ";
         int quantity;
         cin >> quantity;

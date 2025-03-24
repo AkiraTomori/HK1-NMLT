@@ -11,16 +11,22 @@ void displayReaderInfo(int index, char readerName[][100], char readerId[][20], c
 // Xem danh sach va thong tin cua doc gia
 void viewReader(char readerName[][100], char readerId[][20], char readerCCCD[][100], char readerMail[][100], char readerAddress[][100], char readerGender[][100], int readerBirthday[][3], int readerCardDates[][3], int readerExpiryDate[][3], int count)
 {
+    system("cls");
     cout << "\nDanh sach doc gia:\n";
     for (int i = 0; i < count; i++)
         displayReaderInfo(i, readerName, readerId, readerCCCD, readerMail, readerAddress, readerGender, readerBirthday, readerCardDates, readerExpiryDate);
+    system("pause");
+    system("cls");
 }
 // b. Thêm độc giả
 void addReader(int &count, char readerName[][100], char readerId[][20], char readerCCCD[][100], char readerMail[][100], char readerAddress[][100], char readerGender[][100], int readerBirthday[][3], int readerCardDates[][3], int readerExpiryDate[][3])
 {
+    system("cls");
     if (count >= MAX_READER)
     {
         cout << "\nKhong the them doc gia moi, danh sach da day.\n";
+        system("pause");
+        system("cls");
         return;
     }
     cout << "\nNhap thong tin cua doc gia moi:\n";
@@ -75,10 +81,13 @@ void addReader(int &count, char readerName[][100], char readerId[][20], char rea
     readerExpiryDate[count][2] = year;
     count++;
     cout << "Doc gia moi da duoc them thanh cong.\n";
+    system("pause");
+    system("cls");
 }
 // c. Chỉnh sửa thông tin của một độc giả
 void editReader(int count, char readerName[][100], char readerId[][20], char readerCCCD[][100], char readerMail[][100], char readerAddress[][100], char readerGender[][100], int readerBirthday[][3], int readerCardDates[][3], int readerExpiryDate[][3])
 {
+    system("cls");
     char readerid[100];
     cout << "\nNhap id cua doc gia can chinh sua: ";
     cin.ignore();
@@ -100,8 +109,8 @@ void editReader(int count, char readerName[][100], char readerId[][20], char rea
                 cout << "5. Dia chi.\n";
                 cout << "6. Gioi tinh.\n";
                 cout << "7. Ngay sinh.\n";
-                // cout << "8. Ngay lap the.\n";
                 cout << "0. Ve lai cua so quan ly doc gia.\n";
+
                 cin >> choice;
                 cin.ignore();
 
@@ -132,7 +141,7 @@ void editReader(int count, char readerName[][100], char readerId[][20], char rea
                     cin.getline(readerGender[i], 100);
                     break;
                 case 7:
-                    cout << "Ngay thang nam sinh moi: ";
+                    cout << "Ngay thang nam sinh moi: \n";
                     cout << "Ngay: ";
                     cin >> readerBirthday[i][0];
                     cout << "Thang: ";
@@ -142,6 +151,8 @@ void editReader(int count, char readerName[][100], char readerId[][20], char rea
                     break;
                 case 0:
                     cout << "Thoat chinh sua\n";
+                    system("pause");
+                    system("cls");
                     break;
                 default:
                     cout << "Lua chon khong hop le.\n";
@@ -149,8 +160,10 @@ void editReader(int count, char readerName[][100], char readerId[][20], char rea
                 }
                 if (choice != 0)
                 {
+                    system("cls");
                     cout << "Thong tin sau khi chinh sua.\n";
                     displayReaderInfo(i, readerName, readerId, readerCCCD, readerMail, readerAddress, readerGender, readerBirthday, readerCardDates, readerExpiryDate);
+                    system("pause");
                 }
             } while (choice != 0);
 
@@ -158,11 +171,14 @@ void editReader(int count, char readerName[][100], char readerId[][20], char rea
         }
     }
     cout << "Khong tim thay doc gia can tim de thay doi.\n";
+    system("pause");
+    system("cls");
 }
 // d. Xóa thông tin của một độc giả
 void removeReader(int &count, char readerName[][100], char readerId[][20], char readerCCCD[][100], char readerMail[][100], char readerAddress[][100], char readerGender[][100], int readerBirthday[][3], int readerCardDates[][3], int readerExpiryDate[][3])
 {
     char readerid[100];
+    system("cls");
     cout << "\nNhap id cua doc gia can xoa: ";
     cin.ignore();
     cin.getline(readerid, 100);
@@ -177,6 +193,9 @@ void removeReader(int &count, char readerName[][100], char readerId[][20], char 
             cin >> c;
             if (c == 'n' || c == 'N')
             {
+                cout << "Khong xoa doc gia, ve lai menu chinh.\n";
+                system("pause");
+                system("cls");
                 return;
             }
             else if (c == 'y' || c == 'Y')
@@ -195,15 +214,20 @@ void removeReader(int &count, char readerName[][100], char readerId[][20], char 
                 }
                 count--;
                 cout << "Xoa doc gia thanh cong!\n";
+                system("pause");
+                system("cls");
                 return;
             }
         }
     }
     cout << "Khong tim thay ten doc gia.\n";
+    system("pause");
+    system("cls");
 }
 // e. Tìm kiếm độc giả theo CCCD
 void FindReaderBaseOnCCCD(int count, char readerName[][100], char readerId[][20], char readerCCCD[][100], char readerMail[][100], char readerAddress[][100], char readerGender[][100], int readerBirthday[][3], int readerCardDates[][3], int readerExpiryDate[][3])
 {
+    system("cls");
     char cccd[100];
     cout << "\nNhap CCCD cua doc gia can tim: ";
     cin.ignore();
@@ -213,14 +237,19 @@ void FindReaderBaseOnCCCD(int count, char readerName[][100], char readerId[][20]
         if (strcmp(readerCCCD[i], cccd) == 0)
         {
             displayReaderInfo(i, readerName, readerId, readerCCCD, readerMail, readerAddress, readerGender, readerBirthday, readerCardDates, readerExpiryDate);
+            system("pause");
+            system("cls");
             return;
         }
     }
     cout << "Khong tim thay doc gia.\n";
+    system("pause");
+    system("cls");
 }
 // f. Tìm kiếm độc giả theo họ tên
 void FindReaderBaseOnName(int count, char readerName[][100], char readerId[][20], char readerCCCD[][100], char readerMail[][100], char readerAddress[][100], char readerGender[][100], int readerBirthday[][3], int readerCardDates[][3], int readerExpiryDate[][3])
 {
+    system("cls");
     char name[100];
     cout << "\nNhap ten doc gia can tim kiem: ";
     cin.ignore();
@@ -230,10 +259,14 @@ void FindReaderBaseOnName(int count, char readerName[][100], char readerId[][20]
         if (strcmp(readerName[i], name) == 0)
         {
             displayReaderInfo(i, readerName, readerId, readerCCCD, readerMail, readerAddress, readerGender, readerBirthday, readerCardDates, readerExpiryDate);
+            system("pause");
+            system("cls");
             return;
         }
     }
     cout << "Khong tim thay doc gia.\n";
+    system("pause");
+    system("cls");
 }
 
 int FindReaderBaseOnId(int count, char readerId[][20], char input[])

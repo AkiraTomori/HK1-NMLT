@@ -21,26 +21,32 @@ void Showtime(int &countReader, char readerName[][100], char readerId[][20], cha
         {
         case 1:
         {
+            system("cls");
             ReaderMenu(countReader, readerName, readerId, readerCCCD, readerMail, readerAddress, readerGender, readerBirthday, readerCardDates, readerExpiryDate);
             break;
         }
         case 2:
         {
+            system("cls");
             BookMenu(countBook, totalBooks, remainBooks, bookISBN, bookTitles, bookAuthor, bookPublisher, bookGenres, bookPublishedYear, bookPrices, bookQuantities);
             break;
         }
         case 3:
         {
+            system("cls");
             borrowBooksMenu(countReader, readerId, readerName, countLoan, loanReaderIDs, loanBooks, loanBookQuantities, loanDates, returnDates, loanBookCount, countBook, bookISBN, bookTitles, bookQuantities, remainBooks);
             break;
         }
         case 4:
         {
+            system("cls");
             returnBookMenu(countLoan, loanReaderIDs, loanBooks, loanBookQuantities, loanDates, returnDates, returnDatesActual, loanBookCount, countBook, bookISBN, bookQuantities, bookPrices, remainBooks);
             break;
         }
         case 5:
         {
+            system("cls");
+            QueryMenu(countReader, readerName, readerId, readerCCCD, readerMail, readerAddress, readerGender, readerBirthday, readerCardDates, readerExpiryDate, countBook, totalBooks, remainBooks, bookISBN, bookTitles, bookAuthor, bookPublisher, bookGenres, bookPublishedYear, bookPrices, bookQuantities, countLoan, loanReaderIDs, loanBooks, loanBookQuantities, loanDates, returnDates, returnDatesActual, loanBookCount);
             break;
         }
         case 0:
@@ -90,6 +96,9 @@ void ReaderMenu(int &countReader, char readerName[][100], char readerId[][20], c
         case 5:
             FindReaderBaseOnCCCD(countReader, readerName, readerId, readerCCCD, readerMail, readerAddress, readerGender, readerBirthday, readerCardDates, readerExpiryDate);
             break;
+        case 6:
+            FindReaderBaseOnName(countReader, readerName, readerId, readerCCCD, readerMail, readerAddress, readerGender, readerBirthday, readerCardDates, readerExpiryDate);
+            break;
         case 0:
             cout << "Quay lai menu chinh.\n";
             break;
@@ -99,6 +108,7 @@ void ReaderMenu(int &countReader, char readerName[][100], char readerId[][20], c
         }
         if (readerChoice == 0)
         {
+            system("cls");
             break;
         }
     }
@@ -146,8 +156,10 @@ void BookMenu(int &countBook, int &totalBooks, int &remainBooks, char bookISBN[]
             cout << "Lua chon khong hop le.\n";
             break;
         }
-        if (bookChoice == 0)
+        if (bookChoice == 0){
+            system("cls");
             break;
+        }
     }
 }
 
@@ -185,23 +197,41 @@ void QueryMenu(int &countReader, char readerName[][100], char readerId[][20], ch
         {
         case 1:
         {
+            system("cls");
             cout << "So luong sach trong thu vien: " << countTotalBooks(bookQuantities, countBook) << "\n";
+            system("pause");
+            system("cls");
             break;
         }
         case 2:
+            system("cls");
             countBookByGenres(bookGenres, bookQuantities, countBook);
+            system("pause");
+            system("cls");
             break;
         case 3:
+            system("cls");
             cout << "So luong doc gia hien tai: " << countTotalReaders(countReader) << "\n";
+            system("pause");
+            system("cls");
             break;
         case 4:
+            system("cls");
             countReaderByGenders(readerGender, countReader);
+            system("pause");
+            system("cls");
             break;
         case 5:
+            system("cls");
             cout << "So luong sach dang duoc muon: " << countBorrowedBooks(countLoan, loanBookCount) << "\n";
+            system("pause");
+            system("cls");
             break;
         case 6:
+            system("cls");
             listOverduedReaders(countLoan, loanReaderIDs, returnDates, returnDatesActual);
+            system("pause");
+            system("cls");
             break;
         case 0:
             cout << "Quay lai menu chinh.\n";
@@ -212,6 +242,7 @@ void QueryMenu(int &countReader, char readerName[][100], char readerId[][20], ch
         }
         if (queryChoice == 0)
         {
+            system("cls");
             break;
         }
     }
