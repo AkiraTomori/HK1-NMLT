@@ -38,7 +38,7 @@ void countBookByGenres(char bookGenres[][50], int BookQuantites[], int countBook
     cout << "Thong ke so luong sach the loai.\n";
     for (int i = 0; i < uniqueGenres; i++)
     {
-        cout << "The loai " << checkedGenres[i] << ": " << genreCount[i]; 
+        cout << "The loai " << checkedGenres[i] << ": " << genreCount[i] << "\n"; 
     }
 }
 // C. Thong ke co bao nhieu doc gia

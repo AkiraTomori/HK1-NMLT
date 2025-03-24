@@ -145,13 +145,13 @@ void editReader(int count, char readerName[][100], char readerId[][20], char rea
 // d. Xóa thông tin của một độc giả
 void removeReader(int &count, char readerName[][100], char readerId[][20], char readerCCCD[][100], char readerMail[][100], char readerAddress[][100], char readerGender[][100], int readerBirthday[][3], int readerCardDates[][3], int readerExpiryDate[][3])
 {
-    char id[100];
+    char readerid[100];
     cout << "\nNhap id cua doc gia can xoa: ";
     cin.ignore();
-    cin.getline(id, 100);
+    cin.getline(readerid, 100);
     for (int i = 0; i < count; i++)
     {
-        if (strcmp(readerCCCD[i], id) == 0)
+        if (strcmp(readerCCCD[i], readerid) == 0)
         {
             cout << "Da tim thay doc gia can tim.\n";
             displayReaderInfo(i, readerName, readerId, readerCCCD, readerMail, readerAddress, readerGender, readerBirthday, readerCardDates, readerExpiryDate);
