@@ -1,5 +1,12 @@
 #include "MainMenu.h"
 
+/**
+ * @brief Chương trình quản lý thư viện.
+ * 
+ * Chương trình này quản lý thông tin độc giả, sách và các phiếu mượn/trả sách.
+ * Dữ liệu được khởi tạo sẵn để kiểm tra các chức năng của chương trình.
+ */
+
 int main()
 {
     // Khai báo các kiểu dữ liệu cần thiết để có thể thực hiện chương trình
