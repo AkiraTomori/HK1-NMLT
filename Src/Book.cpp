@@ -249,7 +249,7 @@ int FindBookBasedOnISBN(int count, char bookISBN[][20], char input[])
     int index = -1;
     for (int i = 0; i < count; i++)
     {
-        if (strcmp(bookISBN[i], input))
+        if (strcmp(bookISBN[i], input) == 0)
         {
             index = i;
             break;
@@ -263,7 +263,7 @@ int FindBookBasesOnName(int count, char bookTitiles[][100], char input[])
     int index = -1;
     for (int i = 0; i < count; i++)
     {
-        if (strcmp(bookTitiles[i], input))
+        if (strcmp(bookTitiles[i], input) == 0)
         {
             index = i;
             break;

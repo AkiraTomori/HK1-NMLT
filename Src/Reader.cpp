@@ -274,7 +274,7 @@ int FindReaderBaseOnId(int count, char readerId[][20], char input[])
     int indexId = -1;
     for (int i = 0; i < count; i++)
     {
-        if (strcmp(readerId[count], input) == 0)
+        if (strcmp(readerId[i], input) == 0)
         {
             indexId = i;
             break;

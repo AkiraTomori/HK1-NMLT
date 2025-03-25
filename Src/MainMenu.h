@@ -110,7 +110,7 @@ void BookMenu(int &countBook, int &totalBooks, int &remainBooks, char bookISBN[]
  * @param remainBooks Số sách còn lại.
  */
 
-void borrowBooksMenu(int countReader, char readerId[][20], char readerName[][100], int countLoan, char loanReaderIDs[][20], char loanBooks[MAX_LOANS][MAX_BORROWED_BOOKS][20], int loanBookQuantites[][MAX_BORROWED_BOOKS], int loanDates[][3], int returnDates[][3],
+void borrowBooksMenu(int countReader, char readerId[][20], char readerName[][100], int &countLoan, char loanReaderIDs[][20], char loanBooks[MAX_LOANS][MAX_BORROWED_BOOKS][20], int loanBookQuantites[][MAX_BORROWED_BOOKS], int loanDates[][3], int returnDates[][3],
                      int loanBookCount[], int countBook, char bookISBN[][20], char bookTitles[][100], int bookQuantities[], int &remainBooks);
 
 

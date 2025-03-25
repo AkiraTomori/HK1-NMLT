@@ -63,12 +63,15 @@ void countReaderByGenders(char readerGender[][100], int countReader)
 }
 
 // E. Thong ke so sach dang muon
-int countBorrowedBooks(int countLoan, int LoanBookCount[])
+int countBorrowedBooks(int countLoan, int loanBookQuantites[][MAX_BORROWED_BOOKS], int loanBookCount[])
 {
     int totalBorrowedBooks = 0;
     for (int i = 0; i < countLoan; i++)
     {
-        totalBorrowedBooks += LoanBookCount[i];
+        for (int j = 0; j < loanBookCount[i]; j++)
+        {
+            totalBorrowedBooks += loanBookQuantites[i][j];
+        }
     }
     return totalBorrowedBooks;
 }

@@ -18,7 +18,7 @@ using namespace std;
 // void returnBooks(char loanReaderIDs[][20], int returnDates[][3], int returnDateSActual[][3], int countLoan);
 
 
-void borrowBooks(int countReader, char readerId[][20], char readerName[][100], int countLoan, char loanReaderID[][20], char loanBooks[MAX_LOANS][MAX_BORROWED_BOOKS][20], int loanBookQuantites[][MAX_BORROWED_BOOKS], int loanDates[][3], int returnDates[][3],
+void borrowBooks(int countReader, char readerId[][20], char readerName[][100], int &countLoan, char loanReaderID[][20], char loanBooks[MAX_LOANS][MAX_BORROWED_BOOKS][20], int loanBookQuantites[][MAX_BORROWED_BOOKS], int loanDates[][3], int returnDates[][3],
     int loanBookCount[], int countBook, char bookISBN[][20], char bookTitles[][100], int bookQuantities[], int &remainBooks);
 
 void returnBooks(int countLoan, char loanReaderIDs[][20], char loanBooks[MAX_LOANS][MAX_BORROWED_BOOKS][20], int loanBookQuanties[][MAX_BORROWED_BOOKS], 
