@@ -181,6 +181,7 @@ int main()
     remainBooks += bookQuantities[3];
     countBook++;
 
+    // Chương trình chính
     Showtime(countReader, readerName, readerId, readerCCCD, readerMail, readerAddress, readerGender, readerBirthday, readerCardDates, readerExpiryDate, countBook, totalBooks, remainBooks, bookISBN, bookTitles, bookAuthor, bookPublisher, bookGenres, bookPublishedYear, bookPrices, bookQuantities, countLoan, loanReaderIDs, loanBooks, loanBookQuantites, loanDates, returnDates, returnDatesActual, loanBookCount);
     return 0;
 }
