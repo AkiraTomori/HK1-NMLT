@@ -9,8 +9,6 @@
 #include "Query.h"
 using namespace std;
 
-#define MAX_BOOKS 100
-
 /**
  * @brief Hiển thị thông tin của một cuốn sách.
  *

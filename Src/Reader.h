@@ -9,7 +9,6 @@
 #include "Constants.h"
 using namespace std;
 
-#define MAX_READER 100
 // a. Xem danh sach doc gia va cac thong tin ca nhan
 /**
  * @brief Xem danh sách độc giả
