@@ -1,5 +1,5 @@
 #include "MainMenu.h"
-
+#include <iomanip>
 /**
  * @brief Hiển thị thông tin về độc giả, sách và phiếu mượn/trả sách và thống kê.
  *
@@ -40,6 +40,7 @@ void Showtime(int &countReader, char readerName[][100], char readerId[][20], cha
 {
     while (1)
     {
+        printf("\t\tQUAN LY THU VIEN.\n");
         header2();
         cout << "1. Quan ly doc gia.\n";
         cout << "2. Quan ly sach.\n";
