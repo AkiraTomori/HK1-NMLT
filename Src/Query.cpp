@@ -18,21 +18,26 @@ void countBookByGenres(char bookGenres[][50], int BookQuantites[], int countBook
 
     for (int i = 0; i < countBook; i++)
     {
-        bool found = false;
+        bool found = false; // Cờ đánh dấu là chưa tìm được thể loại đó trong dữ liệu
         for (int j = 0; j < uniqueGenres; j++)
         {
             if (strcmp(bookGenres[i], checkedGenres[j]) == 0)
             {
+                // Kiểm tra từng sách có tương ứng thể loại ko.
+                // Nếu tương ứng thì tăng số lượng sách của thể loại đó lên
                 genreCount[j] += BookQuantites[i];
+                // Đặt cờ found về true và break vòng lặp con
                 found = true;
                 break;
             }
         }
         if (!found)
         {
+            // Nếu chưa có thể loại này, thêm vào mảng checkGenres (đại diện cho thể loại riêng biệt)
+            // Đồng thời tăng số lượng sách của thể loại đó
             strcpy(checkedGenres[uniqueGenres], bookGenres[i]);
             genreCount[uniqueGenres] = BookQuantites[i];
-            uniqueGenres++;
+            uniqueGenres++; // Số lượng thể loại tăng lên
         }
     }
     cout << "Thong ke so luong sach the loai.\n";

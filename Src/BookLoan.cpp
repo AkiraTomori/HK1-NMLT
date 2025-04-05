@@ -10,6 +10,7 @@ void borrowBooks(int countReader, char readerId[][20], char readerName[][100], i
     int idIndex = FindReaderBaseOnId(countReader, readerId, id);
     while (idIndex == -1)
     {
+        // Tiếp tục nhập cho đến khi tìm được độc giả
         cout << "Doc gia chua duoc them vao thu vien !\n";
         cout << "Hay nhap lai id de tim lai.\n";
         cout << "1. Nhap lai.\n";
@@ -25,16 +26,21 @@ void borrowBooks(int countReader, char readerId[][20], char readerName[][100], i
         }
         else
         {
+            cout << "Ve lai cua so menu chinh.\n";
+            system("pause");
+            system("cls");
             return;
         }
     }
     if (idIndex != -1)
     {
+        // Tìm được tên của độc giả
         cout << "Da tim thay ten doc gia: " << readerName[idIndex] << "\n";
         strcpy(loanReaderIDs[countLoan], readerId[idIndex]);
     }
     if (loanDates[idIndex][0] != 0 && loanDates[idIndex][1] != 0 && loanDates[idIndex][2] != 0)
     {
+        // Nếu độc giả này đang mượn sách thì không được phép mượn khi mà lần mượn đó chưa được trả xong.
         cout << "Doc gia nay dang muon sach ! Hay tra sach de co the muon sach moi.\n";
         system("pause");
         system("cls");
@@ -46,6 +52,8 @@ void borrowBooks(int countReader, char readerId[][20], char readerName[][100], i
 
     if (BorrowedBooks > MAX_BORROWED_BOOKS)
     {
+        // Tối đa được mượn 10 cuốn sách (số lượng 1 cuốn có thể tùy và không bị giới hạn)
+        // Mượn nhiều thì có thể bị mất nhiều và có thể trả nợ ngang 1 môn hoặc vé phạt giao thông.
         cout << "Doc gia chi co the muon toi da 10 cuon sach\n";
         system("pause");
         system("cls");
@@ -59,7 +67,7 @@ void borrowBooks(int countReader, char readerId[][20], char readerName[][100], i
         char isbnOrName[100];
         cin.ignore();
         cin.getline(isbnOrName, 100);
-
+        // Tìm sách theo ISBN hoặc tên sách
         while (i == -1)
         {
             i = FindBookBasedOnISBN(countBook, bookISBN, isbnOrName);
@@ -78,10 +86,18 @@ void borrowBooks(int countReader, char readerId[][20], char readerName[][100], i
         cout << "So luong sach muon muon: ";
         int quantity;
         cin >> quantity;
-        if (quantity > bookQuantities[i])
+        // if (quantity > bookQuantities[i])
+        // {
+        //     cout << "So luong sach trong kho khong du.\n";
+
+        //     return;
+        // }
+        while (quantity > bookQuantities[i])
         {
             cout << "So luong sach trong kho khong du.\n";
-            return;
+            cout << "So luong sach cua sach hien tai: " << bookQuantities[i] << "\n";
+            cout << "Xin hay nhap lai so luong nho hon: ";
+            cin >> quantity;
         }
         strcpy(loanBooks[countLoan][j], bookISBN[i]);
         loanBookQuantites[countLoan][j] = quantity;
@@ -99,6 +115,7 @@ void borrowBooks(int countReader, char readerId[][20], char readerName[][100], i
     cout << "Nam: ";
     cin >> loanDates[countLoan][2];
 
+    // Xử lý cho ngày trả sách
     int day = loanDates[countLoan][0] + 7;
     int month = loanDates[countLoan][1];
     int year = loanDates[countLoan][2];
@@ -150,6 +167,7 @@ void returnBooks(int countLoan, char loanReaderIDs[][20], char loanBooks[MAX_LOA
     int overdueDays = (returnDatesActual[LoanIndex][0] - returnDates[LoanIndex][0]) +
                       (returnDatesActual[LoanIndex][1] - returnDates[LoanIndex][1]) * 30 +
                       (returnDatesActual[LoanIndex][2] - returnDates[LoanIndex][2]) * 365;
+    // Tính toán trễ hẹn theo ngày
     int totalFine = 0;
     int fine = 0;
     if (overdueDays > 0)
@@ -161,6 +179,7 @@ void returnBooks(int countLoan, char loanReaderIDs[][20], char loanBooks[MAX_LOA
 
     for (int j = 0; j < loanBookCount[LoanIndex]; j++)
     {
+        // Tính toán tiền phạt nếu có mất sách
         cout << "Sach " << loanBooks[LoanIndex][j] << " co bi mat khong ? (1: co, 0: khong): ";
         int lost;
         cin >> lost;
@@ -185,6 +204,7 @@ void returnBooks(int countLoan, char loanReaderIDs[][20], char loanBooks[MAX_LOA
         }
     }
     cout << "Tong tien phat: " << totalFine << " dong.\n";
+    // Set dữ liệu ngày mượn về không.
     loanDates[LoanIndex][0] = 0;
     loanDates[LoanIndex][1] = 0;
     loanDates[LoanIndex][2] = 0;

@@ -145,13 +145,13 @@ void FindBookBaseOnName(int count, char bookISBN[][20], char bookTitles[][100], 
 int FindBookBasedOnISBN(int count, char bookISBN[][20], char input[]);
 
 /**
- * @brief Tìm kiếm sách theo tên.
- *
- * @param count Số lượng sách.
- * @param bookTitles Mảng chứa tiêu đề của sách.
- * @param input Tên sách cần tìm kiếm.
- * @return Chỉ số của sách trong mảng.
+ * @brief Tìm kiếm sách theo tên (tìm vị trí trong mảng)
+ * 
+ * @param count Số lượng sách
+ * @param bookTitles Mảng chứa tựa đề của sách
+ * @param input Tên sách mà người dùng cần tìm kiếm
+ * 
+ * @return Trả về vị trí của sách (vị trí có giá trị khác -1)
  */
-
 int FindBookBasesOnName(int count, char bookTitiles[][100], char input[]);
 #endif

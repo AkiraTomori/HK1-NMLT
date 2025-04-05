@@ -40,7 +40,7 @@ void Showtime(int &countReader, char readerName[][100], char readerId[][20], cha
 {
     while (1)
     {
-        printf("\t\tQUAN LY THU VIEN.\n");
+        printf("\t\tQUAN LY THU VIEN\n");
         header2();
         cout << "1. Quan ly doc gia.\n";
         cout << "2. Quan ly sach.\n";
@@ -187,7 +187,7 @@ void BookMenu(int &countBook, int &totalBooks, int &remainBooks, char bookISBN[]
         header2();
         cout << "1. Xem danh sach cac sach trong thu vien.\n";
         cout << "2. Them sach vao thu vien.\n";
-        cout << "3. Chinh sua thong tin cua mot quyen sach\n";
+        cout << "3. Chinh sua thong tin cua mot quyen sach.\n";
         cout << "4. Xoa thong tin sach.\n";
         cout << "5. Tim kiem sach theo ISBN.\n";
         cout << "6. Tim kiem sach theo tua de.\n";

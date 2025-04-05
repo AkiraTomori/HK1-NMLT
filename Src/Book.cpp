@@ -1,8 +1,9 @@
 #include "Book.h"
 
+// Xem thông tin của sách
 void displayBookInfo(int index, char bookISBN[][20], char bookTitles[][100], char bookAuthor[][100], char bookPublisher[][100], char bookGenres[][50], int bookPublishedYear[], int bookPrices[], int bookQuantites[])
 {
-    cout << index + 1 << ". " << bookISBN[index] << " - " << bookTitles[index] << " - " << bookAuthor[index] << " - " << bookPublisher[index] << " - " << bookGenres[index]
+    cout << index + 1 << " - " << bookISBN[index] << " - " << bookTitles[index] << " - " << bookAuthor[index] << " - " << bookPublisher[index] << " - " << bookGenres[index]
          << " - " << bookPublishedYear[index] << " - " << bookPrices[index] << " - " << bookQuantites[index] << "\n";
 }
 // a. Xem danh sach cac sach trong thu vien
@@ -244,6 +245,7 @@ void FindBookBaseOnName(int count, char bookISBN[][20], char bookTitles[][100], 
     system("pause");
     system("cls");
 }
+
 int FindBookBasedOnISBN(int count, char bookISBN[][20], char input[])
 {
     int index = -1;

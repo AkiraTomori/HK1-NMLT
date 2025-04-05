@@ -1,5 +1,5 @@
 #include "Reader.h"
-
+// Xem thông tin của từng độc giả
 void displayReaderInfo(int index, char readerName[][100], char readerId[][20], char readerCCCD[][100], char readerMail[][100], char readerAddress[][100], char readerGender[][100], int readerBirthday[][3], int readerCardDates[][3], int readerExpiryDate[][3])
 {
     // cout << "Thong tin cua doc gia.\n";
@@ -24,11 +24,13 @@ void addReader(int &count, char readerName[][100], char readerId[][20], char rea
     system("cls");
     if (count >= MAX_READER)
     {
+        // Nếu như quá số lượng thì không thể thêm mới
         cout << "\nKhong the them doc gia moi, danh sach da day.\n";
         system("pause");
         system("cls");
         return;
     }
+    // Nhập từng thông tin thuộc tính cho độc giả
     cout << "\nNhap thong tin cua doc gia moi:\n";
     cout << "Ten: ";
     cin.ignore();
@@ -60,8 +62,7 @@ void addReader(int &count, char readerName[][100], char readerId[][20], char rea
     cout << "Nam: ";
     cin >> readerCardDates[count][2];
 
-    // cout << "Ngay het han: (ngay/thang/nam): ";
-
+    // Xử lý toán học cho số ngày hết hạn của thẻ độc giả
     int day = readerCardDates[count][0];
     int month = readerCardDates[count][1] + 48;
     int year = readerCardDates[count][2];
@@ -96,11 +97,13 @@ void editReader(int count, char readerName[][100], char readerId[][20], char rea
     {
         if (strcmp(readerId[i], readerid) == 0)
         {
+            // Nếu tìm ra được thì tiếp tục thực hiện các công việc
             cout << "Da tim thay doc gia.\n";
             displayReaderInfo(i, readerName, readerId, readerCCCD, readerMail, readerAddress, readerGender, readerBirthday, readerCardDates, readerExpiryDate);
             int choice;
             do
             {
+                // Menu phụ để thực hiện công việc chỉnh sửa 
                 cout << "Chon thong tin can thay doi:\n";
                 cout << "1. Ho ten.\n";
                 cout << "2. Ma doc gia.\n";
@@ -160,6 +163,7 @@ void editReader(int count, char readerName[][100], char readerId[][20], char rea
                 }
                 if (choice != 0)
                 {
+                    // Cứ mỗi lần sửa xong 1 thông tin thì sẽ cập nhật lại ngay lập tức cho thấy thông tin nào thay đổi
                     system("cls");
                     cout << "Thong tin sau khi chinh sua.\n";
                     displayReaderInfo(i, readerName, readerId, readerCCCD, readerMail, readerAddress, readerGender, readerBirthday, readerCardDates, readerExpiryDate);
@@ -186,13 +190,16 @@ void removeReader(int &count, char readerName[][100], char readerId[][20], char 
     {
         if (strcmp(readerId[i], readerid) == 0)
         {
+            // Nếu tìm ra được thì tiếp tục thực hiện công việc
             cout << "Da tim thay doc gia can tim.\n";
+            // In ra thông tin độc giả đó và xác nhận muốn xóa hay không
             displayReaderInfo(i, readerName, readerId, readerCCCD, readerMail, readerAddress, readerGender, readerBirthday, readerCardDates, readerExpiryDate);
             cout << "Ban co muon xoa doc gia nay khong ? (y/n)\n";
             char c;
             cin >> c;
             if (c == 'n' || c == 'N')
             {
+                // Chọn no thì quay về
                 cout << "Khong xoa doc gia, ve lai menu chinh.\n";
                 system("pause");
                 system("cls");
@@ -200,6 +207,7 @@ void removeReader(int &count, char readerName[][100], char readerId[][20], char 
             }
             else if (c == 'y' || c == 'Y')
             {
+                // Nếu Yes thì thực hiện phép remove Element trên mảng bằng cách ghi đè, dịch mọi phần tử về trái, giảm số lượng độc giả
                 for (int j = i; j < count - 1; j++)
                 {
                     strcpy(readerName[j], readerName[j + 1]);
@@ -214,6 +222,7 @@ void removeReader(int &count, char readerName[][100], char readerId[][20], char 
                 }
                 count--;
                 cout << "Xoa doc gia thanh cong!\n";
+                // Sau khi xóa xong, break khỏi vòng lặp của hàm
                 system("pause");
                 system("cls");
                 return;
@@ -269,6 +278,7 @@ void FindReaderBaseOnName(int count, char readerName[][100], char readerId[][20]
     system("cls");
 }
 
+// Hàm hỗ trợ để tìm độc giả theo ID
 int FindReaderBaseOnId(int count, char readerId[][20], char input[])
 {
     int indexId = -1;

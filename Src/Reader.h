@@ -47,7 +47,7 @@ void addReader(int &count, char readerName[][100], char readerId[][20], char rea
 // c. Chỉnh sửa thông tin của một độc giả
 
 /**
- * @brief Chỉnh sửa độc giả
+ * @brief Chỉnh sửa thông tin của độc giả
  *
  * @param readerName Mảng chứa tên độc giả
  * @param readerId Mảng chứa mã độc giả
@@ -142,6 +142,15 @@ void displayReaderInfo(int index, char readerName[][100], char readerId[][20], c
  * @return trả về vị trí của độc giả đó
  */
 
+/**
+ * @brief Tìm kiếm độc giả theo ID 
+ * 
+ * @param count Số lượng độc giả
+ * @param readerId mảng chứa các Id độc giả
+ * @param input Id độc giả mà người dùng muốn tìm kiếm
+ * 
+ * @return trả về vị trí tìm được kết quả (khác giá trị -1)
+ */
 int FindReaderBaseOnId(int count, char readerId[][20], char input[]);
 // void Menu1();
 #endif
